@@ -2,6 +2,7 @@ package com.example.controle02;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,9 @@ import android.widget.Toast;
 public class CoteJava extends AppCompatActivity {
     Button btn_reinitializer,btn_quitter,btn_afficher;
     EditText Number;
+
+    Button colorW,colorP,colorPu;
+
     TextView tv1;
 
     @Override
@@ -23,6 +27,10 @@ public class CoteJava extends AppCompatActivity {
         Number = findViewById(R.id.number);
         tv1 = findViewById(R.id.tv);
         btn_afficher=findViewById(R.id.btn_aff);
+
+        colorW=findViewById(R.id.btn_w);
+        colorP=findViewById(R.id.btn_p);
+        colorPu=findViewById(R.id.btn_pu);
 
         btn_reinitializer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,5 +78,31 @@ public class CoteJava extends AppCompatActivity {
             }
 
         });
+
+        colorW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setMyScreenColor(Color.WHITE);
+            }
+        });
+        colorP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setMyScreenColor(Color.rgb(244,152,173));
+            }
+        });
+        colorPu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setMyScreenColor(Color.rgb(255,219,88));
+            }
+        });
+
+
+    }
+    public void setMyScreenColor(int color){
+        View v=this.getWindow().getDecorView();
+        v.setBackgroundColor(color);
+
     }
 }
