@@ -9,8 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class CoteJava extends AppCompatActivity {
-    Button btn_reinitializer,btn_quitter;
+    Button btn_reinitializer,btn_quitter,btn_afficher;
     EditText Number;
+    TextView tv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +20,14 @@ public class CoteJava extends AppCompatActivity {
         btn_reinitializer = findViewById(R.id.btn_rn);
         btn_quitter = findViewById(R.id.btn_qtt);
         Number = findViewById(R.id.number);
+        tv1 = findViewById(R.id.tv);
+        btn_afficher=findViewById(R.id.btn_aff);
 
         btn_reinitializer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Number.setText(null);
+                tv1.setText("? * 1 =?\n ? * 2 =?\n ? * 3 =?\n ? * 4 =?\n ? * 5 =?\n ? * 6 =?\n ? * 7 =?\n ? * 8 =?\n ? * 9 =?\n ? * 10 =?");
             }
         });
 
@@ -33,6 +37,32 @@ public class CoteJava extends AppCompatActivity {
                 finish();
                 System.exit(0);
             }
+        });
+
+        btn_afficher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+
+
+                    int Number1 = Integer.parseInt(Number.getText().toString());
+                    String sh="";
+                    for (int i=1;i<=10;i++) {
+                        int re= Number1*i;
+                        sh+=String.format(" %d*%d=%d \n",Number1,i,re);
+                        re=0;
+
+                    }
+                    tv1.setText(sh);
+
+
+
+                }catch (NumberFormatException e){
+                    btn_reinitializer.callOnClick();
+                }
+
+            }
+
         });
     }
 }
