@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CoteJava extends AppCompatActivity {
     Button btn_reinitializer,btn_quitter,btn_afficher;
@@ -39,6 +40,9 @@ public class CoteJava extends AppCompatActivity {
             }
         });
 
+        Toast toast;
+        toast=Toast.makeText(CoteJava.this,"veuillez saisir un entier !!",Toast.LENGTH_SHORT);
+
         btn_afficher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +63,8 @@ public class CoteJava extends AppCompatActivity {
 
                 }catch (NumberFormatException e){
                     btn_reinitializer.callOnClick();
+
+                    toast.show();
                 }
 
             }
